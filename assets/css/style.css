@@ -1,0 +1,20 @@
+h1 {
+    font-size: 48px;
+}
+
+h3 {
+    font-size: 24px;
+}
+.card-header {
+ background-color: rgb(73, 36, 167);
+ color: white;
+ font-weight: bold;
+}
+#time-table th,
+td {
+    display: inline-block;
+    width: 20%;
+}
+.bold-font {
+    font-weight: bold;
+}
