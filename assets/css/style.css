@@ -1,23 +1,32 @@
+/* style on various texts */
 h1 {
     font-size: 48px;
 }
-
 h3 {
     font-size: 24px;
+}
+.bold-font {
+    font-weight: bold;
+}
+/* style on various flex boxes */
+.jumbotron{
+    margin-bottom: 10px;
+}
+.card {
+    border: 1px solid rgb(73, 36, 167);
 }
 .card-header {
  background-color: rgb(73, 36, 167);
  color: white;
  font-weight: bold;
 }
+/* style on table elements */
 #time-table th,
 td {
     display: inline-block;
     width: 20%;
 }
-.bold-font {
-    font-weight: bold;
-}
+/* style on image */
 img {
     height: 100px;
     width: 100px;
