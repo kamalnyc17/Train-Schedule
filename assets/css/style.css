@@ -9,6 +9,17 @@ h3 {
     font-weight: bold;
 }
 /* style on various flex boxes */
+
+.container{
+    background-image: url("../images/background.jpg");  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 10px;
+      
+    height: 100%; 
+    min-height: 100vh; 
+}
 .jumbotron{
     margin-bottom: 10px;
 }
