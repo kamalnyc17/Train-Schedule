@@ -27,8 +27,15 @@
 
         <!-- jumbotron to create the heading -->
         <div class="jumbotron" style="background-color: rgb(81, 42, 42); color: white; padding: 25px">
-            <h1 class="text-center">Today's Train Schedule</h1>
-            <h3 class="text-center">America Runs on Amtrak</h3>
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="assets/images/amtrak logo.jpg" class="img-fluid" alt="Responsive image">
+                </div>
+                <div class="col-md-11">
+                    <h1 class="text-center">Today's Train Schedule</h1>
+                    <h3 class="text-center">America Runs on Amtrak</h3>
+                </div>
+            </div>
         </div>
 
         <!-- Current Train Schedule -->
@@ -76,7 +83,7 @@
                     </div>
                     <div class="form-group">
                       <label for="start-input" class="bold-font">First Train Time (HH:mm - military time))</label>
-                      <input class="form-control" id="start-input" placeholder="01/08/1989" type="text">
+                      <input class="form-control" id="start-input" placeholder="00:00" type="text">
                     </div>
                     <div class="form-group">
                       <label for="frequency-input" class="bold-font">Frequency (min)</label>
