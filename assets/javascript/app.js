@@ -56,7 +56,7 @@ $("#add-train-btn").on("click", function (event) {
     }
 
     if (trainName === "") {
-        //alert("Enter the name of the train");
+        alert("Enter the name of the train");
     } else if (destination === "") {
         alert("Enter the destination of the train");
     } else if ((trainTime === "") || (parseInt(trainTime) === 0)) {
