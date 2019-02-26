@@ -19,7 +19,7 @@ var minutesAway = "";
 var trainFrequency = "1";
 var nextArrival = "00:00";
 
-// loading the table with existing schedule
+// loading the table with existing schedule from the database
 dataRef.ref().on("value", function (snapshot) {
     $("#time-table > tbody").empty();
     snapshot.forEach(function (childSnapshot) {
