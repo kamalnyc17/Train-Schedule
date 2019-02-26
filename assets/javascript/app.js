@@ -26,9 +26,9 @@ dataRef.ref().on("value", function (snapshot) {
         var newRow = $("<tr>").append(
             $("<td>").text(childSnapshot.val().trainName),
             $("<td>").text(childSnapshot.val().destination),
-            $("<td>").text(childSnapshot.val().trainFrequency),
-            $("<td>").text(childSnapshot.val().nextTrainTime),
-            $("<td>").text(childSnapshot.val().minutesAway)
+            $("<td class='time-col'>").text(childSnapshot.val().trainFrequency),
+            $("<td class='time-col'>").text(childSnapshot.val().nextTrainTime),
+            $("<td class='time-col'>").text(childSnapshot.val().minutesAway)
         );
 
         // Append the new row to the table

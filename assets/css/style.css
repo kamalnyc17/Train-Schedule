@@ -38,6 +38,9 @@ td {
     display: inline-block;
     width: 20%;
 }
+.time-col {
+    text-align: center;
+}
 /* style on image */
 img {
     height: 100px;
