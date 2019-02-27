@@ -28,7 +28,6 @@ provider.addScope('profile');
 provider.addScope('email');
 firebase.auth().signInWithRedirect(provider);
 
-
 // Using a redirect.
 firebase.auth().getRedirectResult().then(function(result) {
     if (result.credential) {
@@ -36,8 +35,7 @@ firebase.auth().getRedirectResult().then(function(result) {
       var token = result.credential.accessToken;
     }
     var user = result.user;
-  }); */
-  
+  }); */  
 
 // clear out error messages once the user clicks on an input field
 $(".form-control").on("click", function () {
