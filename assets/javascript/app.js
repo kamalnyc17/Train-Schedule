@@ -125,8 +125,8 @@ $("#add-train-btn").on("click", function (event) {
             destination: destination,
             firstTrainTime: trainTime,
             trainFrequency: trainFrequency,
-            nextTrainTime: nextTrainTime,
-            minutesAway: minutesAway,
+            //nextTrainTime: nextTrainTime,
+            //minutesAway: minutesAway,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
 
