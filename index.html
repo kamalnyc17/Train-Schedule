@@ -75,18 +75,22 @@
                     <div class="form-group">
                       <label for="train-name-input" class="bold-font">Train Name</label>
                       <input class="form-control" id="train-name-input" placeholder="" type="text">
+                      <p class= "error-msg" id="train-input-error">Enter the name of the train</p>
                     </div>
                     <div class="form-group">
                       <label for="destination-input" class="bold-font">Destination</label>
                       <input class="form-control" id="destination-input" placeholder="" type="text">
+                      <p class= "error-msg" id="destination-input-error">Enter the destination of the train</p>
                     </div>
                     <div class="form-group">
                       <label for="start-input" class="bold-font">First Train Time (HH:mm - military time)</label>
                       <input class="form-control" id="start-input" placeholder="00:00" type="text">
+                      <p class= "error-msg" id="start-input-error">Enter the First Train Time (HH:mm - military time)</p>
                     </div>
                     <div class="form-group">
                       <label for="frequency-input" class="bold-font">Frequency (min)</label>
                       <input class="form-control" id="frequency-input" placeholder="" type="text">
+                      <p class= "error-msg" id="frequency-input-error">The train frequency must be greater than 1 minutes</p>
                     </div>
                     <button class="btn btn-primary float-left" id="add-train-btn">Submit</button>
                   </form>
