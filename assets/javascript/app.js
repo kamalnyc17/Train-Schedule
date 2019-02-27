@@ -31,12 +31,31 @@ $(".form-control").on("click", function() {
 dataRef.ref().on("value", function (snapshot) {
     $("#time-table > tbody").empty();
     snapshot.forEach(function (childSnapshot) {
+        var nextTrain       = (moment().diff(moment(childSnapshot.val().firstTrainTime, "HH:mm")))/1000/60; 
+        var multiply1       = parseInt((nextTrain / parseInt(childSnapshot.val().trainFrequency)) + 1) * parseInt(childSnapshot.val().trainFrequency);
+        var nextTrainTime   = moment(childSnapshot.val().trainTime, "HH:mm").add(multiply1, "minute").format('HH:mm');
+        minutesAway         = parseInt(((moment(nextTrainTime, "HH:mm").diff(moment()))/1000/60)+1); // how many minutes the next train is away
+
+        console.log( childSnapshot.val().trainName );
+        console.log( "nextTrain " + nextTrain);
+        console.log( "multiply1 " + multiply1);
+        console.log( "nextTrainTime " + nextTrainTime);
+        console.log( "minutesAway " + minutesAway);
+
+        console.log( moment(childSnapshot.val().firstTrainTime, "HH:mm").isBefore(moment(), 'HH:mm'));
+
+        if (moment(childSnapshot.val().firstTrainTime, "HH:mm").isBefore(moment(), 'HH:mm')) {
+
+        } else {
+            nextTrainTime = childSnapshot.val().firstTrainTime;
+        }
+
         var newRow = $("<tr>").append(
             $("<td>").text(childSnapshot.val().trainName),
             $("<td>").text(childSnapshot.val().destination),
             $("<td class='time-col'>").text(childSnapshot.val().trainFrequency),
-            $("<td class='time-col'>").text(childSnapshot.val().nextTrainTime),
-            $("<td class='time-col'>").text(childSnapshot.val().minutesAway)
+            $("<td class='time-col'>").text(nextTrainTime),
+            $("<td class='time-col'>").text(minutesAway)
         );
 
         // Append the new row to the table
@@ -88,7 +107,7 @@ $("#add-train-btn").on("click", function (event) {
     
     // if all fields pass validation then do next step
     if (isRight) {
-        //calculate next train time
+        //calculate next train time & minutes away
         var nextTrain       = (moment().diff(moment(trainTime, "HH:mm")))/1000/60; //difference in time in minutes
         var multiply1       = parseInt((nextTrain / trainFrequency) + 1) * trainFrequency;
         var nextTrainTime   = moment(trainTime, "HH:mm").add(multiply1, "minute").format('HH:mm');
