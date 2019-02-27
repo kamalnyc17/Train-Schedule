@@ -2,118 +2,119 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Train Scheduler</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Train Scheduler</title>
 
-    <!-- style sheets -->
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <!-- firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- style sheets -->
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <!-- Link to Moment.js should go here -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+  <!-- Link to Moment.js should go here -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 
 <body>
-    <!-- main container -->
-    <div class="container">
+  <!-- main container -->
+  <div class="container">
 
-        <!-- jumbotron to create the heading -->
-        <div class="jumbotron" style="background-color: rgb(81, 42, 42); color: white; padding: 25px">
-            <div class="row">
-                <div class="col-md-1">
-                    <img src="assets/images/amtrak logo.jpg" class="img-fluid" alt="Responsive image">
-                </div>
-                <div class="col-md-11">
-                    <h1 class="text-center">Today's Train Schedule</h1>
-                    <h3 class="text-center">Trains Depart from New York Penn Station</h3>
-                </div>
-            </div>
+    <!-- jumbotron to create the heading -->
+    <div class="jumbotron" style="background-color: rgb(81, 42, 42); color: white; padding: 25px">
+      <div class="row">
+        <div class="col-md-1">
+          <img src="assets/images/amtrak logo.jpg" class="img-fluid" alt="Responsive image">
         </div>
-
-        <!-- Current Train Schedule -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card mb-4">
-                    <div class="card-header">Current Train Schedule</div>
-                    <div class="card-body">
-                        <table class="table table-sm table-hover" id='time-table'>
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="bold-font">Train Name</th>
-                                    <th scope="col" class="bold-font">Destination</th>
-                                    <th scope="col" class="bold-font time-col">Frequency (min)</th>
-                                    <th scope="col" class="bold-font time-col">Next Arrival</th>
-                                    <th scope="col" class="bold-font time-col">Minutes Away</th>
-                                </tr>
-                            </thead>
-                            <!-- schedule data goes here via JS -->
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-11">
+          <h1 class="text-center">Today's Train Schedule</h1>
+          <h3 class="text-center">Trains Depart from New York Penn Station</h3>
         </div>
-        
-        <!-- add new schedule  -->
-        <div class="row">
-            <div class="col-md-12">
-              <div class="card mb-4">
-                <div class="card-header">Add Train</div>
-                <div class="card-body">
-      
-                  <!-- data entry form -->
-                  <form>
-                    <div class="form-group">
-                      <label for="train-name-input" class="bold-font">Train Name</label>
-                      <input class="form-control" id="train-name-input" placeholder="" type="text">
-                      <p class= "error-msg" id="train-input-error"></p>
-                    </div>
-                    <div class="form-group">
-                      <label for="destination-input" class="bold-font">Destination</label>
-                      <input class="form-control" id="destination-input" placeholder="" type="text">
-                      <p class= "error-msg" id="destination-input-error"></p>
-                    </div>
-                    <div class="form-group">
-                      <label for="start-input" class="bold-font">First Train Time (HH:mm - military time)</label>
-                      <input class="form-control" id="start-input" placeholder="00:00" type="text">
-                      <p class= "error-msg" id="start-input-error"></p>
-                    </div>
-                    <div class="form-group">
-                      <label for="frequency-input" class="bold-font">Frequency (min)</label>
-                      <input class="form-control" id="frequency-input" placeholder="" type="text">
-                      <p class= "error-msg" id="frequency-input-error"></p>
-                    </div>
-                    <button class="btn btn-primary float-left" id="add-train-btn">Submit</button>
-                  </form>
-      
-                </div>
-              </div>
-            </div>
-          </div>
+      </div>
     </div>
 
-    <!-- bootstrap jquery-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
+    <!-- Current Train Schedule -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-4">
+          <div class="card-header">Current Train Schedule</div>
+          <div class="card-body">
+            <table class="table table-sm table-hover" id='time-table'>
+              <thead>
+                <tr>
+                  <th scope="col" class="bold-font">Train Name</th>
+                  <th scope="col" class="bold-font">Destination</th>
+                  <th scope="col" class="bold-font time-col">Frequency (min)</th>
+                  <th scope="col" class="bold-font time-col">Next Arrival</th>
+                  <th scope="col" class="bold-font time-col">Minutes Away</th>
+                </tr>
+              </thead>
+              <!-- schedule data goes here via JS -->
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- jquery library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- add new schedule  -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-4">
+          <div class="card-header">Add Train</div>
+          <div class="card-body">
 
-    <!-- javascript -->
-    <script src="assets/javascript/app.js"></script>
+            <!-- data entry form -->
+            <form>
+              <div class="form-group">
+                <label for="train-name-input" class="bold-font">Train Name</label>
+                <input class="form-control" id="train-name-input" placeholder="" type="text">
+                <p class="error-msg" id="train-input-error"></p>
+              </div>
+              <div class="form-group">
+                <label for="destination-input" class="bold-font">Destination</label>
+                <input class="form-control" id="destination-input" placeholder="" type="text">
+                <p class="error-msg" id="destination-input-error"></p>
+              </div>
+              <div class="form-group">
+                <label for="start-input" class="bold-font">First Train Time (HH:mm - military time)</label>
+                <input class="form-control" id="start-input" placeholder="00:00" type="text">
+                <p class="error-msg" id="start-input-error"></p>
+              </div>
+              <div class="form-group">
+                <label for="frequency-input" class="bold-font">Frequency (min)</label>
+                <input class="form-control" id="frequency-input" placeholder="" type="text">
+                <p class="error-msg" id="frequency-input-error"></p>
+              </div>
+              <button class="btn btn-primary float-left" id="add-train-btn">Submit</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bootstrap jquery-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+
+  <!-- jquery library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- javascript -->
+  <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
