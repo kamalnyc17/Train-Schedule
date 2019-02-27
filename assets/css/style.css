@@ -8,8 +8,12 @@ h3 {
 .bold-font {
     font-weight: bold;
 }
+.error-msg {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
 /* style on various flex boxes */
-
 .container{
     background-image: url("../images/background.jpg");  
     background-position: center;

@@ -19,6 +19,14 @@ var minutesAway = "";
 var trainFrequency = "1";
 var nextArrival = "00:00";
 
+
+$("#train-name-input").on("click", function() {
+    $("#train-input-error").text( "" );
+    $("#destination-input-error").text( "" );
+    $("#start-input-error").text( "" );
+    $("#frequency-input-error").text( "" );
+});
+
 // loading the table with existing schedule from the database
 dataRef.ref().on("value", function (snapshot) {
     $("#time-table > tbody").empty();
@@ -49,21 +57,37 @@ $("#add-train-btn").on("click", function (event) {
     nextArrival = "00:00";
 
     // checking time format & value for train time
-    var aTime = moment(trainTime, 'HH:mm', true);
+    var aTime   = moment(trainTime, 'HH:mm', true);
     var isValid = aTime.isValid();
+    var isRight = true;
+    var errMsg  = ["Enter the name of the train", "Enter the destination of the train", "Enter the First Train Time (HH:mm - military time)", "The train frequency must be greater than 1 minutes"];
     if (!isValid){
         trainTime = "";
     }
 
     if (trainName === "") {
-        alert("Enter the name of the train");
-    } else if (destination === "") {
-        alert("Enter the destination of the train");
-    } else if ((trainTime === "") || (parseInt(trainTime) === 0)) {
-        alert("Enter the First Train Time (HH:mm - military time)");
-    } else if (trainFrequency < 1) {
-        alert("The train frequency must be greater than 1 minutes");
-    } else {
+        $("#train-input-error").text( errMsg[0] );
+        $("#train-input-error").show();
+        isRight = false;
+    }
+    if (destination === "") {
+        $("#destination-input-error").text( errMsg[1] );
+        $("#destination-input-error").show();
+        isRight = false;
+    }
+    if ((trainTime === "") || (parseInt(trainTime) === 0)) {
+        $("#start-input-error").text( errMsg[2] );
+        $("#start-input-error").show();
+        isRight = false;
+    }
+    if (trainFrequency < 1) {
+        $("#frequency-input-error").text( errMsg[3] );
+        $("#frequency-input-error").show();
+        isRight = false;
+    } 
+    
+    // if all fields pass validation then do next step
+    if (isRight) {
         //calculate next train time
         var nextTrain       = (moment().diff(moment(trainTime, "HH:mm")))/1000/60; //difference in time in minutes
         var multiply1       = parseInt((nextTrain / trainFrequency) + 1) * trainFrequency;
