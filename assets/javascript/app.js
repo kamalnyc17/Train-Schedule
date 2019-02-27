@@ -19,8 +19,8 @@ var minutesAway = "";
 var trainFrequency = "1";
 var nextArrival = "00:00";
 
-
-$("#train-name-input").on("click", function() {
+// clear out error messages once the user clicks on an input field
+$(".form-control").on("click", function() {
     $("#train-input-error").text( "" );
     $("#destination-input-error").text( "" );
     $("#start-input-error").text( "" );
