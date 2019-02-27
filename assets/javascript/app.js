@@ -21,13 +21,14 @@ var nextArrival = "00:00";
 var nextTrainTime;
 var timeCounter;
 
+/*
 // user authentication
 var provider = new firebase.auth.GoogleAuthProvider();
 provider.addScope('profile');
 provider.addScope('email');
 firebase.auth().signInWithRedirect(provider);
 
-/*
+
 // Using a redirect.
 firebase.auth().getRedirectResult().then(function(result) {
     if (result.credential) {
