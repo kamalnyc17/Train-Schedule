@@ -56,6 +56,7 @@ function tableUpdate() {
             $("#time-table > tbody").append(newRow);
         });
     });
+    // recalculating schedule every minute
     clearInterval(timeCounter);
     timeCounter = setInterval(tableUpdate, 1000 * 60);
 }
@@ -147,6 +148,7 @@ $("#add-train-btn").on("click", function (event) {
         // Append the new row to the table
         $("#time-table > tbody").append(newRow);
     }
+    // recalculating schedule every minute
     clearInterval(timeCounter);
     timeCounter = setInterval(tableUpdate, 1000 * 60);
 });
