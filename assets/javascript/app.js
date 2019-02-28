@@ -21,22 +21,6 @@ var nextArrival = "00:00";
 var nextTrainTime;
 var timeCounter;
 
-/*
-// user authentication
-var provider = new firebase.auth.GoogleAuthProvider();
-provider.addScope('profile');
-provider.addScope('email');
-firebase.auth().signInWithRedirect(provider);
-
-// Using a redirect.
-firebase.auth().getRedirectResult().then(function(result) {
-    if (result.credential) {
-      // This gives you a Google Access Token.
-      var token = result.credential.accessToken;
-    }
-    var user = result.user;
-  }); */  
-
 // clear out error messages once the user clicks on an input field
 $(".form-control").on("click", function () {
     $("#train-input-error").text("");
